@@ -51,7 +51,8 @@ export default {
       overlay.classList.add('overlay');
       overlay.addEventListener('click', () => {
         overlay.remove();
-        document.querySelector('.message').remove();
+        document.querySelector('.message').classList.add("up");
+        setTimeout(() => {document.querySelector('.message').remove();}, 500);
       });
       document.body.appendChild(overlay);
       const message = document.createElement('div');
@@ -181,6 +182,22 @@ export default {
   width: 200px;
   animation: down .5s backwards;
   font-weight: bold;
+}
+
+.message.up {
+  animation: up .5s backwards;
+}
+
+@keyframes up {
+  0% {
+    top: 50%;
+  }
+  20% {
+    top: 55%;
+  }
+  100% {
+    top: -50%;
+  }
 }
 
 button {
